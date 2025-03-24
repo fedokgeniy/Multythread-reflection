@@ -12,7 +12,13 @@ try
     Console.WriteLine("Insert name of a method (example: PrintObject):");
     string methodName = Console.ReadLine();
 
-    Type type = assembly.GetType(className);
+    Type type = Type.GetType(className);
+
+    if (type == null)
+    {
+        type = assembly.GetType(className);
+    }
+
     if (type == null)
     {
         Console.WriteLine("Class not found");
